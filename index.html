@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <meta name="keywords" content="путешествия, интересные места, домбай, эльбрус, карачаевск, карачаево-черкессия, идеи путешествий, фотографии путешествий">
+  <meta name="description" content="Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки">
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+  <div class="page__container">
+    <!-- блок header -->
+    <header class="header">
+      <img class="header__logo" src="./images/logo-white.png" alt="логотип сайта место россия">
+      <div class="header__line"></div>
+    </header>
+    <!-- блок content -->
+    <main class="content">
+      <!-- секция profile -->
+      <section class="profile">
+        <div class="profile__container">
+          <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
+          <div class="profile__info">
+            <div class="profile__edit">
+              <h1 class="profile__username">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button link" type="button"></button>
+            </div>
+            <p class="profile__description">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button link" type="button"></button>
+        </div>
+      </section>
+      <!-- секция elements -->
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="карачаевск сентинский храм на фоне гор">
+            <div class="element__group">
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="element__like link" type="button"></button>
+            </div>
+          </li>
+
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1404681-unsplash.png" alt="гора эльбрус вдалеке в лучах закатного солнца">
+            <div class="element__group">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__like link" type="button"></button>
+            </div>
+          </li>
+
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1556355-unsplash.png" alt="заснеженный острый пик горы, на фоне леса на склонах соседних гор">
+            <div class="element__group">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__like link" type="button"></button>
+            </div>
+          </li>
+
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1404681-unsplash.png" alt="гора эльбрус вдалеке в лучах закатного солнца">
+            <div class="element__group">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__like link" type="button"></button>
+            </div>
+          </li>
+
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1556355-unsplash.png" alt="заснеженный острый пик горы, на фоне леса на склонах соседних гор">
+            <div class="element__group">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__like link" type="button"></button>
+            </div>
+          </li>
+
+          <li class="element">
+            <img class="element__photo" src="./images/kirill-pershin-1088404-unsplash.png" alt="карачаевск сентинский храм на фоне гор">
+            <div class="element__group">
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="element__like" type="button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <!-- блок footer -->
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close link" type="button"></button>
+        <form class="popup__form" name="change-profile">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input class="popup__input popup__input-name" type="text" name="user-name">
+          <input class="popup__input popup__input-bio" type="text" name="user-bio">
+          <button class="popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script async src="././scripts/index.js"></script>
+</body>
+
+</html>
