@@ -3,9 +3,8 @@
   font-size: 24px;
   line-height: 29.05px;
   color: #000;
-  margin: 0;
+  margin: 0 0 54px 0;
   width: 358px;
-  padding-bottom: 14px;
 }
 
 @media screen and (max-width: 700px) {
@@ -13,6 +12,6 @@
     width: 238px;
     font-size: 18px;
     line-height: 21.78px;
-    padding-bottom: 35px;
+    margin-bottom: 75px;
   }
 }

@@ -1,8 +1,10 @@
 .element__group {
   display: flex;
+  margin: 0;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 15px 31px 21px;
-  margin: 0 auto;
+  padding: 24px 16px 29px 22px;
+
+  /*padding: 25px 15px 31px 21px;*/
 }
