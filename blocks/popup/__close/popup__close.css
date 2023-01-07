@@ -3,7 +3,7 @@
   position: absolute;
   display: block;
   background-size: contain;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   background-repeat: no-repeat;
   outline: none;
   top: -40px;
@@ -22,3 +22,5 @@
     top: -36px;
   }
 }
+
+

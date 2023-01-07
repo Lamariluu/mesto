@@ -1,7 +1,10 @@
 .element {
-  box-sizing: border-box;
-  background-color: #fff;
-  border-radius: 10px;
+  position: relative;
   overflow: hidden;
+  background-color: #fff;
+  color: #000;
+  margin: 0 auto;
+  border-radius: 10px;
   max-width: 282px;
+  width: 100%;
 }
