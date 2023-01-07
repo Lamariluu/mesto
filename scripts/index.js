@@ -56,41 +56,19 @@ const initialCards = [
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
+
 //функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
-//открытие формы профиля
-profileButtonProfile.addEventListener('click',()=>{
-  inputName.value = profileUsername.textContent;
-  inputBio.value = profileDescription.textContent;
-  openPopup(popupProfile);
-});
-//открытие формы добавления карточки
-profileButtonAdd.addEventListener('click',()=>{
-  inputPlaceName.value = '';
-  inputPlaceImg.value = '';
-  openPopup(popupAdd);
-});
-//закрытие формы профиля
-popupCloseProfile.addEventListener('click',()=>{
-  closePopup(popupProfile);
-});
-//закрытие формы добавления карточки
-popupCloseAdd.addEventListener('click',()=>{
-  closePopup(popupAdd);
-});
-
 //функция сохранения данных профиля
-function saveFormSubmit(evt) {
+function saveProfileFormSubmit(evt) {
   evt.preventDefault();
   profileUsername.textContent = inputName.value;
   profileDescription.textContent = inputBio.value;
   closePopup(popupProfile);
 };
-
-popupFormProfile.addEventListener('submit', saveFormSubmit);
 
 //функция создания новых карточек
 function createElement(name, link) {
@@ -117,21 +95,14 @@ function createElement(name, link) {
   return newElement;
 };
 
-//закрытие попапа просмотра фотографии
-popupCloseImg.addEventListener('click',()=>{
-  closePopup(popupOpenImg);
-});
-
-//функции добавления новых карточек
-function elementFormSubmit(evt) {
+//функция добавления новых карточек
+function createCardFormSubmit(evt) {
   evt.preventDefault();
   sectionElements.prepend(createElement(inputPlaceName.value, inputPlaceImg.value));
   closePopup(popupAdd);
 };
 
-popupFormAdd.addEventListener('submit', elementFormSubmit);
-
-//функции добавления новых карточек в начало страницы
+//функция добавления новых карточек в начало страницы
 function appendElement(name, link) {
   sectionElements.append(createElement(name, link));
 };
@@ -139,3 +110,31 @@ initialCards.forEach(partOfCard => {
   appendElement(partOfCard.name, partOfCard.link);
 });
 
+//открытие формы профиля
+profileButtonProfile.addEventListener('click',()=>{
+  inputName.value = profileUsername.textContent;
+  inputBio.value = profileDescription.textContent;
+  openPopup(popupProfile);
+});
+//открытие формы добавления карточки
+profileButtonAdd.addEventListener('click',()=>{
+  inputPlaceName.value = '';
+  inputPlaceImg.value = '';
+  openPopup(popupAdd);
+});
+//закрытие формы профиля
+popupCloseProfile.addEventListener('click',()=>{
+  closePopup(popupProfile);
+});
+//закрытие формы добавления карточки
+popupCloseAdd.addEventListener('click',()=>{
+  closePopup(popupAdd);
+});
+//добавление новых карточек
+popupFormAdd.addEventListener('submit', createCardFormSubmit);
+//сохранение данных профиля
+popupFormProfile.addEventListener('submit', saveProfileFormSubmit);
+//закрытие попапа просмотра фотографии
+popupCloseImg.addEventListener('click',()=>{
+  closePopup(popupOpenImg);
+});
