@@ -25,5 +25,6 @@
 }
 
 .popup__save:hover {
+  cursor: pointer;
   opacity: .8;
 }

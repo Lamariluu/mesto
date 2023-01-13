@@ -24,6 +24,8 @@ const popupImgCaption = document.querySelector('.popup__img-caption');
 const sectionElements = document.querySelector('.elements');
 const elementsTemplate = document.querySelector('#elements').content;
 const elementsImg = document.querySelector('.element__photo');
+const popups = document.querySelectorAll(".popup");
+
 //создание переменной для массива с карточками
 const initialCards = [
   {
@@ -52,14 +54,44 @@ const initialCards = [
   }
 ];
 
+//создание переменной для валидации всех форм
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_inactive',
+  inputErrorClass: 'popup__input-error',
+  errorClass: 'popup__input-error_visible',
+  typeError : 'popup__input_type_error',
+};
+
 //функция открытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  //закрытие при нажатии Esc
+  document.addEventListener('keydown', closePopupEsc);
+};
+
+//функция закрытия попапов при нажатии Esc
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
+//функция закрытия попапов при клике на overlay
+function closePopupOverlay(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.currentTarget);
+  }
 };
 
 //функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  //закрытие при нажатии Esc, удаление слушателя
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 //функция сохранения данных профиля
@@ -138,3 +170,11 @@ popupFormProfile.addEventListener('submit', saveProfileFormSubmit);
 popupCloseImg.addEventListener('click',()=>{
   closePopup(popupOpenImg);
 });
+//закрытие попапов при клике на overlay
+popupProfile.addEventListener("click", closePopupOverlay);
+popupAdd.addEventListener("click", closePopupOverlay);
+popupOpenImg.addEventListener("click", closePopupOverlay);
+
+//подключение валидации
+enableValidation(validationConfig);
+
