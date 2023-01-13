@@ -26,7 +26,8 @@ function checkInputValidity(formElement, inputElement, config) {
 //функция выявления валидности у каждого инпута
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
-};
+}
+
 
 //функция изменения состояния кнопки в зависимоти от валидности полей
 function toggleButtonState(inputList, buttonElement, config) {
@@ -36,7 +37,7 @@ function toggleButtonState(inputList, buttonElement, config) {
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
-  }
+  };
 };
 
 //функция получения всех инпутов

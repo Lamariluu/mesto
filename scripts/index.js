@@ -23,7 +23,6 @@ const popupImg = document.querySelector('.popup__img');
 const popupImgCaption = document.querySelector('.popup__img-caption');
 const sectionElements = document.querySelector('.elements');
 const elementsTemplate = document.querySelector('#elements').content;
-const elementsImg = document.querySelector('.element__photo');
 const popups = document.querySelectorAll(".popup");
 
 //создание переменной для массива с карточками
@@ -53,6 +52,10 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+//переменные для блокирования кнопки
+const inputArea = Array.from(popupFormAdd.querySelectorAll('.popup__input'));
+const activeButton = popupFormAdd.querySelector('.popup__save');
 
 //создание переменной для валидации всех форм
 const validationConfig = {
@@ -102,22 +105,24 @@ function saveProfileFormSubmit(evt) {
   closePopup(popupProfile);
 };
 
-//функция создания новых карточек
+  //функция создания новых карточек
 function createElement(name, link) {
   const newElement = elementsTemplate.querySelector('.element').cloneNode(true);
-  newElement.querySelector('.element__photo').src = link;
-  newElement.querySelector('.element__photo').alt = name;
+  const elementsImg = newElement.querySelector('.element__photo');
+  elementsImg.src = link;
   newElement.querySelector('.element__title').textContent = name;
-//просмотр фотографии
-  newElement.querySelector('.element__photo').addEventListener('click', () => {
-    popupImg.src = newElement.querySelector('.element__photo').src;
+  //просмотр фотографии
+  elementsImg.addEventListener('click', () => {
+    popupImg.src = elementsImg.src;
     popupImg.alt = newElement.querySelector('.element__title').textContent;
     popupImgCaption.textContent = newElement.querySelector('.element__title').textContent;
     openPopup(popupOpenImg);
   });
+
 //добавление лайка
-  newElement.querySelector('.element__like').addEventListener('click', () => {
-    newElement.querySelector('.element__like').classList.toggle('element__like_active');
+  const elementsLike = newElement.querySelector('.element__like')
+  elementsLike.addEventListener('click', () => {
+    elementsLike.classList.toggle('element__like_active');
   });
 //удаление карточки
   newElement.querySelector('.element__trash').addEventListener('click', () => {
@@ -153,6 +158,7 @@ profileButtonAdd.addEventListener('click',()=>{
   inputPlaceName.value = '';
   inputPlaceImg.value = '';
   openPopup(popupAdd);
+  toggleButtonState(inputArea, activeButton, validationConfig);
 });
 //закрытие формы профиля
 popupCloseProfile.addEventListener('click',()=>{
@@ -171,9 +177,16 @@ popupCloseImg.addEventListener('click',()=>{
   closePopup(popupOpenImg);
 });
 //закрытие попапов при клике на overlay
-popupProfile.addEventListener("click", closePopupOverlay);
-popupAdd.addEventListener("click", closePopupOverlay);
-popupOpenImg.addEventListener("click", closePopupOverlay);
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close")) {
+      closePopup(popup);
+    }
+  });
+});
 
 //подключение валидации
 enableValidation(validationConfig);
