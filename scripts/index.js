@@ -110,6 +110,7 @@ function createElement(name, link) {
   const newElement = elementsTemplate.querySelector('.element').cloneNode(true);
   const elementsImg = newElement.querySelector('.element__photo');
   elementsImg.src = link;
+  elementsImg.alt = name;
   newElement.querySelector('.element__title').textContent = name;
   //просмотр фотографии
   elementsImg.addEventListener('click', () => {
@@ -179,10 +180,7 @@ popupCloseImg.addEventListener('click',()=>{
 //закрытие попапов при клике на overlay
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains("popup__close")) {
+    if (evt.target.classList.contains("popup_opened")||evt.target.classList.contains("popup__close")) {
       closePopup(popup);
     }
   });
