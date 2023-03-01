@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <meta name="keywords"
+    content="путешествия, интересные места, домбай, эльбрус, карачаевск, карачаево-черкессия, идеи путешествий, фотографии путешествий">
+  <meta name="description"
+    content="Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки">
+</head>
+
+<body class="page">
+  <div class="page__container">
+    <!-- блок header -->
+    <header class="header">
+      <img class="header__logo" src="<%=require('./images/logo-white.svg')%>" alt="логотип сайта место россия">
+    </header>
+    <!-- блок content -->
+    <main class="content">
+      <!-- секция profile -->
+      <section class="profile">
+        <div class="profile__container">
+          <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="аватар">
+          <div class="profile__info">
+            <div class="profile__edit">
+              <h1 class="profile__username">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button link" type="button" aria-label="Редактировать"></button>
+            </div>
+            <p class="profile__description">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button link" type="button" aria-label="Добавить"></button>
+        </div>
+      </section>
+      <!-- секция elements -->
+      <section class="elements">
+      </section>
+    </main>
+    <!-- блок footer -->
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <!-- попап редактировать профиль -->
+    <div class="popup" id="popup-change-profile">
+      <div class="popup__container">
+        <button class="popup__close popup__close_edit link" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form popup__form_edit" name="form">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input class="popup__input popup__input_type_name" id="username" type="text" name="username"
+            placeholder="Имя пользователя" minlength="2" maxlenght="40" required>
+          <span class="popup__input-error username-error"></span>
+          <input class="popup__input popup__input_type_bio" id="userbio" type="text" name="userbio"
+            placeholder="Описание" minlength="2" maxlenght="200" required>
+          <span class="popup__input-error userbio-error"></span>
+          <button class="popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!-- попап добавить новую карточку -->
+    <div class="popup" id="popup-add-element">
+      <div class="popup__container">
+        <button class="popup__close popup__close_add link" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form popup__form_add" name="form" novalidate>
+          <h3 class="popup__title">Новое место</h3>
+          <input class="popup__input popup__input_type_place-name" id="placename" type="text" name="name"
+            placeholder="Название" minlength="2" maxlenght="40" required>
+          <span class="popup__input-error placename-error"></span>
+          <input class="popup__input popup__input_type_place-img" id="placeimg" type="url" name="link"
+            placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error placeimg-error"></span>
+          <button class="popup__save" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+    <!-- попап открыть большое изображение -->
+    <div class="popup popup_big-img" id="popup-open-img">
+      <div class="popup__container-img">
+        <button class="popup__close popup__close_img link" type="button" aria-label="Закрыть"></button>
+        <figure class="popup__figure">
+          <img class="popup__img" src="#" alt="">
+          <figcaption class="popup__img-caption"></figcaption>
+        </figure>
+      </div>
+    </div>
+    <!-- template карточек -->
+    <template id="elements">
+      <li class="element">
+        <img class="element__photo">
+        <div class="element__group">
+          <h2 class="element__title"></h2>
+          <button class="element__like" type="button" aria-label="Лайк"></button>
+        </div>
+        <button class="element__trash link" type="button" aria-label="Корзина"></button>
+      </li>
+    </template>
+  </div>
+</body>
+
+</html>
