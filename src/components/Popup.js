@@ -1,7 +1,7 @@
 export default class Popup {
-  constructor(popup) {
-    this._popup = popup;
-    this._closeButton = this._popup.querySelector('.popup__close');
+  constructor(popupSelector) {
+    this._popup = document.querySelector(popupSelector);
+    this._buttonClose = this._popup.querySelector('.popup__close');
     this._handleEscClose = this._handleEscClose.bind(this);
   }
 
@@ -26,7 +26,7 @@ export default class Popup {
 
   //функция закрытия попапов при клике на иконку закрытия и overlay
   setEventListeners() {
-    this._closeButton.addEventListener('mousedown', () => {
+    this._buttonClose.addEventListener('mousedown', () => {
       this.close()
     });
     this._popup.addEventListener('mousedown', (evt) => {
