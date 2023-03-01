@@ -1,8 +1,0 @@
-.popup__save_inactive {
-  opacity: .2;
-}
-
-.popup__save_inactive:hover {
-  cursor: auto;
-  opacity: .2;
-}
