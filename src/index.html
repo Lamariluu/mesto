@@ -23,13 +23,16 @@
       <!-- секция profile -->
       <section class="profile">
         <div class="profile__container">
+          <!--<button class="'profile__edit-avatar link" type="button">-->
           <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="аватар">
+          <button class="profile__edit-avatar" type="button"></button>
+          <!--</button>-->
           <div class="profile__info">
             <div class="profile__edit">
-              <h1 class="profile__username">Жак-Ив Кусто</h1>
+              <h1 class="profile__username"></h1>
               <button class="profile__edit-button link" type="button" aria-label="Редактировать"></button>
             </div>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description"></p>
           </div>
           <button class="profile__add-button link" type="button" aria-label="Добавить"></button>
         </div>
@@ -49,12 +52,35 @@
         <form class="popup__form popup__form_edit" name="form" novalidate>
           <h3 class="popup__title">Редактировать профиль</h3>
           <input class="popup__input popup__input_type_name" id="username" type="text" name="username"
-            placeholder="Имя пользователя" minlength="2" maxlenght="40" required>
+            placeholder="Имя пользователя" minlength="2" maxlength="40" required>
           <span class="popup__input-error username-error"></span>
           <input class="popup__input popup__input_type_bio" id="userbio" type="text" name="userbio"
-            placeholder="Описание" minlength="2" maxlenght="200" required>
+            placeholder="Описание" minlength="2" maxlength="200" required>
           <span class="popup__input-error userbio-error"></span>
           <button class="popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!-- попап изменить аватар -->
+    <div class="popup" id="popup-change-avatar">
+      <div class="popup__container">
+        <button class="popup__close popup__close_avatar link" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form popup__form_avatar" name="form" novalidate>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <input class="popup__input popup__input_type_avatar" id="avatar" type="url" name="avatar"
+            placeholder="Ссылка на аватар" required>
+          <span class="popup__input-error avatar-error"></span>
+          <button class="popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!--попап согласия на изменение аватара -->
+    <div class="popup" id="popup-confirm">
+      <div class="popup__container">
+        <button class="popup__close popup__close_confirm link" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form popup__form_confirm" name="form" novalidate>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <button class="popup__save" type="submit">Да</button>
         </form>
       </div>
     </div>
@@ -65,7 +91,7 @@
         <form class="popup__form popup__form_add" name="form" novalidate>
           <h3 class="popup__title">Новое место</h3>
           <input class="popup__input popup__input_type_place-name" id="placename" type="text" name="name"
-            placeholder="Название" minlength="2" maxlenght="40" required>
+            placeholder="Название" minlength="2" maxlength="40" required>
           <span class="popup__input-error placename-error"></span>
           <input class="popup__input popup__input_type_place-img" id="placeimg" type="url" name="link"
             placeholder="Ссылка на картинку" required>
@@ -90,7 +116,10 @@
         <img class="element__photo">
         <div class="element__group">
           <h2 class="element__title"></h2>
-          <button class="element__like" type="button" aria-label="Лайк"></button>
+          <div class="element__like-container">
+            <button class="element__like" type="button" aria-label="Лайк"></button>
+            <p class="element__like-counter"></p>
+          </div>
         </div>
         <button class="element__trash link" type="button" aria-label="Корзина"></button>
       </li>

@@ -8,7 +8,6 @@ export default class PopupWithForm extends Popup {
     this._inputs = document.querySelector(popupSelector).querySelectorAll('.popup__input');
   }
 
-  //функция сбора данных всех полей формы
   _getInputValues() {
     this._formValues = {};
     this._inputs.forEach(input => {
@@ -17,7 +16,6 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   }
 
-  //расширение метода close класса Popup
   close() {
     this._form.reset();
     super.close();
@@ -25,10 +23,8 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     this._form.addEventListener('submit', (evt) => {
-      console.log('setEventListeners', this._getInputValues())
       evt.preventDefault();
       this._handleFormAdd(this._getInputValues());
-      //this.close();
     });
     super.setEventListeners();
   }

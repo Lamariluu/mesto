@@ -3,6 +3,7 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._buttonClose = this._popup.querySelector('.popup__close');
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._submit = this._popup.querySelector('.popup__save');
   }
 
   //функция открытия попапов
@@ -22,6 +23,15 @@ export default class Popup {
     if (evt.key === 'Escape') {
       this.close();
     };
+  }
+
+  //изменение кнопки при сохранении данных
+  setLoading() {
+    this._submit.textContent = 'Сохранение...';
+  }
+
+  setGeneral() {
+    this._submit.textContent = 'Сохранить';
   }
 
   //функция закрытия попапов при клике на иконку закрытия и overlay
